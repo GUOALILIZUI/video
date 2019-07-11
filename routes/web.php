@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('oss1',"Video\VideoController@oss1");
+Route::get('oss2',"Video\VideoController@oss2");
+Route::get('saveVideo',"Video\VideoController@saveVideo");
