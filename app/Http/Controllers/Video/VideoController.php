@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use OSS\OssClient;
+use OSS\Core\OssException;
 use Illuminate\Support\Str;
 
 class VideoController extends Controller
