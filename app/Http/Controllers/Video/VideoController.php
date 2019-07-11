@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Video;
 
+use App\Model\VideoModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
@@ -15,6 +16,10 @@ class VideoController extends Controller
     protected $accessKeySecret = "JvEGN9EM4DEeDIsZwNPJnulBuH4lD3";
     protected $bucket='1809ali';
 
+    /**
+     * @throws \OSS\Core\OssException
+     * 图片上传测试
+     */
     public function oss1()
     {
         $clint=new OssClient($this->accessKeyId,$this->accessKeySecret,env('ALI_OSS_ENDPOINT'));
@@ -25,6 +30,10 @@ class VideoController extends Controller
         var_dump($a);
     }
 
+    /**
+     * @throws \OSS\Core\OssException
+     * 文件上传测试
+     */
     public function oss2()
     {
         $clint=new OssClient($this->accessKeyId,$this->accessKeySecret,env('ALI_OSS_ENDPOINT'));
@@ -50,12 +59,11 @@ class VideoController extends Controller
             }
             //上传
 
-            $file_name=Str::random(5).'.jpg';
+            $file_name=$v;
 //            echo '文件名称：'.$file_name;echo "<br>";
             $local_file=$file_path.'/'.$v;
 //            echo $local_file;echo "<br>";
-            $clint->uploadFile($this->bucket,$file_name,$local_file);
-
+//            $clint->uploadFile($this->bucket,$file_name,$local_file);
             try{
                 $clint->uploadFile($this->bucket,$file_name,$local_file);
             } catch(OssException $e) {
@@ -68,5 +76,18 @@ class VideoController extends Controller
             echo '上传成功';
             unlink($local_file);
         }
+    }
+
+    /**
+     * 播放视频
+     */
+    public function index(){
+        $vid=$_GET['vid'];
+        $a=VideoModel::where('vid',$vid)->first();
+        $data=[
+            'a'=>$a
+        ];
+
+        return view('video.index',$data);
     }
 }
