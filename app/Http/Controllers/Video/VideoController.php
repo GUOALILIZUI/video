@@ -59,7 +59,7 @@ class VideoController extends Controller
             }
             //上传
 
-            $file_name='video/'.$v;
+            $file_name='files/'.$v;
             echo '文件名称：'.$file_name;echo "<br>";
             $local_file=$file_path.'/'.$v;
             echo $local_file;echo "<br>";
