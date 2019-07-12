@@ -8,7 +8,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use OSS\OssClient;
 use OSS\Core\OssException;
-use Illuminate\Support\Str;
 
 class VideoController extends Controller
 {
@@ -60,10 +59,10 @@ class VideoController extends Controller
             }
             //上传
 
-            $file_name=$v;
-//            echo '文件名称：'.$file_name;echo "<br>";
+            $file_name='video/'.$v;
+            echo '文件名称：'.$file_name;echo "<br>";
             $local_file=$file_path.'/'.$v;
-//            echo $local_file;echo "<br>";
+            echo $local_file;echo "<br>";
 //            $clint->uploadFile($this->bucket,$file_name,$local_file);
             try{
                 $clint->uploadFile($this->bucket,$file_name,$local_file);
@@ -75,7 +74,7 @@ class VideoController extends Controller
 
             //文件上传成功后  删除本地文件
             echo '上传成功';
-            unlink($local_file);
+//            unlink($local_file);
         }
     }
 
