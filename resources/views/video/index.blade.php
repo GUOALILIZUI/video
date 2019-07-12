@@ -11,6 +11,6 @@
 
     <h2>这是视频网站</h2>
     <hr>
-    <video src="{{env('HOST')}}/storage/{{$a['path']}}" controls="controls"></video>
+    <video src="{{env('HOST')}}/video/{{$a['path']}}" controls="controls"></video>
 </body>
 </html>

@@ -74,7 +74,7 @@ class VideoController extends Controller
 
             //文件上传成功后  删除本地文件
             echo '上传成功';
-//            unlink($local_file);
+            unlink($local_file);
         }
     }
 
