@@ -90,4 +90,10 @@ class VideoController extends Controller
 
         return view('video.index',$data);
     }
+
+    public function oss(){
+        $json=file_get_contents("php://input");
+        $str=date("Y-m-d HLi:s")."=========".$json."\n";
+        file_put_contents("logs/oss.log",$str,FILE_APPEND);
+    }
 }

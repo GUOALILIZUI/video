@@ -18,3 +18,5 @@ Route::get('oss1',"Video\VideoController@oss1");
 Route::get('oss2',"Video\VideoController@oss2");
 Route::get('saveVideo',"Video\VideoController@saveVideo");
 Route::get('index',"Video\VideoController@index");  //播放视频
+
+Route::post('oss',"Video\VideoController@oss");
