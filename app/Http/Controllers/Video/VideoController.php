@@ -93,7 +93,7 @@ class VideoController extends Controller
 
     public function oss(){
         $json=file_get_contents("php://input");
-        $str=date("Y-m-d HLi:s")."=========".$json."\n";
+        $str=date("Y-m-d H:i:s").'========='.$json."\n";
         file_put_contents("logs/oss.log",$str,FILE_APPEND);
     }
 }
